@@ -33,6 +33,11 @@ const router = createRouter({
       name: 'messages',
       component: messages,
     },
+    {
+      path: '/create-poll',
+      name: 'create-poll',
+      component: messages,
+    },
   ],
 })
 
