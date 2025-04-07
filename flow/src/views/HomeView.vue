@@ -14,6 +14,9 @@
           <router-link to="/messages">Messages</router-link>
         </li>
         <li>
+          <router-link to="/create">Create Poll</router-link>
+        </li>
+        <li>
           <router-link to="/notifications">Notifications</router-link>
         </li>
       </ul>
