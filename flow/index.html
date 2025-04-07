@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/src/assets/Flow-logo.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
-    <script src="/src/login.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
     <title>Flow App</title>
+    <link rel="icon" href="/src/assets/Flow-Logo.jpg" />
+    <!-- 
+      Optionally, you can link Bulma or other frameworks here if you prefer,
+      but we’ll rely on custom styling for black/crimson theme.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
-  <body>
+  <body style="margin:0; padding:0;">
+    <!-- The app mounts here -->
     <div id="app"></div>
+    <!-- Vite will load our main.js -->
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

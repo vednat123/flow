@@ -1,12 +1,6 @@
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
-  
-}
+
 
 .panel{
 
@@ -34,21 +28,6 @@
   }
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-    background-image: url('wallpaper.jpg');
-    background-size: cover; /* Ensures the image covers the entire body */
-    background-position: center; /* Centers the image */
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-}
 
 .full-body{  
   height: 100%;
