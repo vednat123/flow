@@ -1,10 +1,14 @@
-
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Login from '@/views/Login.vue'
 import Signup from '@/views/Signup.vue'
 import HomeView from '@/views/HomeView.vue'
-import messages from '@/views/messages.vue'
+import MessagesView from '@/views/MessagesView.vue'
+import CreatePollView from '@/views/CreatePollView.vue'
+import ProfileView from '@/views/ProfileView.vue'
+import SettingsView from '@/views/SettingsView.vue'
+import NotificationsView from '@/views/NotificationsView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,12 +35,27 @@ const router = createRouter({
     {
       path: '/messages',
       name: 'messages',
-      component: messages,
+      component: MessagesView,
     },
     {
       path: '/create-poll',
       name: 'create-poll',
-      component: messages,
+      component: CreatePollView,
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: ProfileView,
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: SettingsView,
+    },
+    {
+      path: '/notifications',
+      name: 'notifications',
+      component: NotificationsView,
     },
   ],
 })

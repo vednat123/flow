@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-
+    <!-- Left Sidebar -->
     <aside class="left-nav">
       <h2>Menu</h2>
       <ul>
@@ -13,64 +13,59 @@
       </ul>
     </aside>
 
+    <!-- Main Content -->
     <main class="main-timeline">
-      <h1>Timeline / Polls</h1>
-      <div class="poll" v-for="(poll, index) in polls" :key="index">
-        <h3>{{ poll.question }}</h3>
-        <p>Options: {{ poll.options.join(', ') }}</p>
-      </div>
+      <h1>Create a New Poll</h1>
+      <form @submit.prevent="submitPoll">
+        <div class="form-group">
+          <label for="question">Poll Question</label>
+          <input id="question" type="text" v-model="question" required />
+        </div>
+
+        <div
+          class="form-group"
+          v-for="(option, index) in options"
+          :key="index"
+        >
+          <label :for="'option-' + index">Option {{ index + 1 }}</label>
+          <input
+            :id="'option-' + index"
+            type="text"
+            v-model="options[index]"
+            required
+          />
+        </div>
+
+        <button type="button" @click="addOption">Add Option</button>
+        <button type="submit">Create Poll</button>
+      </form>
     </main>
 
+    <!-- Right Sidebar -->
     <aside class="right-trending">
-      <h2>Trending Polls</h2>
-      <div
-        class="trend-item"
-        v-for="(trend, tindex) in trending"
-        :key="tindex"
-      >
-        <p>{{ trend }}</p>
+      <h2>Poll Preview</h2>
+      <div class="trend-item">
+        <h3>{{ question || 'Your poll question will appear here' }}</h3>
+        <ul>
+          <li v-for="(opt, i) in options" :key="i">{{ opt || 'Option ' + (i + 1) }}</li>
+        </ul>
       </div>
     </aside>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HomeView',
-  data() {
-    return {
-      polls: [
-        { question: 'Is Vue better than React?', options: ['Yes', 'No'] },
-        { question: 'Favorite color?', options: ['Red', 'Blue', 'Green'] },
-      ],
-      trending: [
-        'Best Restaurants Poll',
-        'Favorite Programming Language Poll',
-        'Marvel vs DC Poll',
-      ],
-    }
-  },
-}
-</script>
-
 <style scoped>
-/* 
-  Layout: 20% left, 60% center, 20% right 
-  We'll do a simple flex approach with a dark/black background
-  and red highlights. 
-*/
-
 .home-container {
   display: flex;
   min-height: 100vh;
-  background-color: #000; /* black background */
-  color: white;           /* default text color */
+  background-color: #000;
+  color: white;
 }
 
 /* Left column (20%) */
 .left-nav {
   width: 20%;
-  background-color: #111; /* slightly lighter black */
+  background-color: #111;
   padding: 1rem;
   box-sizing: border-box;
   border-right: 2px solid crimson;
@@ -106,18 +101,37 @@ export default {
 }
 .main-timeline h1 {
   color: crimson;
+  margin-bottom: 1.5rem;
+}
+.form-group {
   margin-bottom: 1rem;
 }
-.poll {
-  background-color: #222;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+input {
+  width: 100%;
+  padding: 0.5rem;
   border: 1px solid crimson;
+  border-radius: 4px;
+  background-color: #111;
+  color: white;
 }
-.poll h3 {
-  margin-bottom: 0.5rem;
-  color: #fff;
+
+/* Buttons */
+button {
+  margin-top: 1rem;
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: crimson;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: darkred;
 }
 
 /* Right column (20%) */
