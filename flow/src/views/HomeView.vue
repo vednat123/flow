@@ -19,8 +19,15 @@
 
     <main class="main-content">
       <h1 class="page-title">Recent Polls</h1>
+      <input
+        v-model="searchQuery"
+        type="text"
+        placeholder="Search polls..."
+        class="search-bar"
+      />
+
       <div
-        v-for="(poll, index) in polls"
+        v-for="(poll, index) in filteredPolls"
         :key="index"
         class="poll-card"
       >
@@ -70,7 +77,7 @@ export default {
   name: 'HomeView',
   data() {
     return {
-
+      searchQuery: '',
       polls: [
         {
           question: 'Is Vue better than React?',
@@ -80,7 +87,7 @@ export default {
         },
         {
           question: 'What is your favorite color?',
-          image: null, // no image
+          image: null,
           options: ['Red', 'Blue', 'Green', 'Other'],
           votes: { Red: 12, Blue: 8, Green: 5, Other: 2 },
         },
@@ -98,6 +105,14 @@ export default {
       ],
     }
   },
+  computed: {
+    filteredPolls() {
+      const query = this.searchQuery.toLowerCase()
+      return this.polls.filter(poll =>
+        poll.question.toLowerCase().includes(query)
+      )
+    },
+  },
   methods: {
     getOptionPercent(poll, option) {
       const total = Object.values(poll.votes).reduce((a, b) => a + b, 0)
@@ -107,6 +122,7 @@ export default {
   },
 }
 </script>
+
 
 <style scoped>
 
@@ -219,4 +235,19 @@ export default {
   border: 1px solid crimson;
   color: #fff;
 }
+
+.search-bar {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid crimson;
+  border-radius: 8px;
+  background-color: #111;
+  color: white;
+  font-size: 1rem;
+}
+.search-bar::placeholder {
+  color: #ccc;
+}
+
 </style>
