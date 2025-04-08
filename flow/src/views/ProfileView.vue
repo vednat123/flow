@@ -5,7 +5,6 @@
       <ul>
         <li><router-link to="/home">Home</router-link></li>
         <li><router-link to="/profile">Profile</router-link></li>
-        <li><router-link to="/settings">Settings</router-link></li>
         <li><router-link to="/messages">Messages</router-link></li>
         <li><router-link to="/create-poll">Create Poll</router-link></li>
         <li><router-link to="/notifications">Notifications</router-link></li>
@@ -13,7 +12,8 @@
     </aside>
 
     <main class="main-timeline">
-      <!-- Placeholder -->
+      <img v-bind:src="url" width="250" height="250">
+      <h1>Profile</h1>
     </main>
 
     <aside class="right-trending">
@@ -25,6 +25,11 @@
 <script>
 export default {
   name: 'ProfileView',
+  data(){
+    return{
+      url: "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg"
+    }
+  }
 };
 </script>
 

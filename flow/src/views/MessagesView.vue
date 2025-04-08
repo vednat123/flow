@@ -7,7 +7,6 @@
         <ul>
           <li><router-link to="/home">Home</router-link></li>
           <li><router-link to="/profile">Profile</router-link></li>
-          <li><router-link to="/settings">Settings</router-link></li>
           <li><router-link to="/messages">Messages</router-link></li>
           <li><router-link to="/create-poll">Create Poll</router-link></li>
           <li><router-link to="/notifications">Notifications</router-link></li>
