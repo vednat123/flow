@@ -139,3 +139,8 @@ h3{
 .login-button:hover {
   background: #f03a5f;
 }
+
+.error {
+  color: red;
+  margin-bottom: 1rem;
+}

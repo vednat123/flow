@@ -11,8 +11,10 @@
       <div class="login-logo">
         <img :src="flowLogo" alt="Flow Logo" />
       </div>
+    
       <button @click="login" class="login-button">Login</button>
       <button @click="signup" class="login-button">Sign Up</button>
+ 
       
       <div class="login-box" id="login-box">
         <!-- <h5 v-if="errorMsg" class="error">{{ errorMsg }}</h5>
@@ -56,7 +58,7 @@ export default {
   },
   methods: {
     login() {
-      buildPanel(false)
+      buildPanel(false, "")
       // if (!this.username || !this.password) {
       //   this.errorMsg = 'Please fill in both username and password.'
       //   return
@@ -68,7 +70,7 @@ export default {
     },
     signup() {
       // Maybe you want a separate sign-up route, or do it here
-      buildPanel(true)
+      buildPanel(true, "")
     },
   },
 }
@@ -127,8 +129,5 @@ export default {
 
 
 
-.error {
-  color: red;
-  margin-bottom: 1rem;
-}
+
 </style>
