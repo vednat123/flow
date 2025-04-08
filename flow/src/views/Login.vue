@@ -1,4 +1,4 @@
-<!-- src/views/Login.vue -->
+
 <template>
   <section class="login-page">
     <div class="login-container">
@@ -17,24 +17,6 @@
  
       
       <div class="login-box" id="login-box">
-        <!-- <h5 v-if="errorMsg" class="error">{{ errorMsg }}</h5>
-        
-        <label for="username">Username:</label>
-        <input
-          id="username"
-          v-model="username"
-          type="text"
-          placeholder="Enter Username"
-        />
-
-        <label for="password">Password:</label>
-        <input
-          id="password"
-          v-model="password"
-          type="password"
-          placeholder="Enter Password"
-        /> -->
-
       </div>
     </div>
   </section>
@@ -59,17 +41,8 @@ export default {
   methods: {
     login() {
       buildPanel(false, "")
-      // if (!this.username || !this.password) {
-      //   this.errorMsg = 'Please fill in both username and password.'
-      //   return
-      // }
-      // Example "login" logic:
-      //alert('Login successful. In a real app, you would store a token and redirect.')
-      // For now, just redirect to /home
-      //this.$router.push('/home')
     },
     signup() {
-      // Maybe you want a separate sign-up route, or do it here
       buildPanel(true, "")
     },
   },
@@ -77,8 +50,6 @@ export default {
 </script>
 
 <style scoped>
-/* Example black+red styling. 
-   You can refine or move these to main.css if you want them global. */
 
 .login-page {
   width: 100%;

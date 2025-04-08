@@ -1,8 +1,10 @@
 <template>
   <div class="home-layout">
     <aside class="sidebar-left">
-      <div class="login-logo">
-        <img :src="flowLogo" alt="Flow Logo" />
+      <div class="logo-container">
+        <router-link to="/home">
+          <img :src="assets/Flow-Logo" alt="Flow Logo" class="flow-logo" />
+        </router-link>
       </div>
       <ul>
         <li><router-link to="/home">Home</router-link></li>
