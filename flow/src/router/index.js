@@ -6,7 +6,6 @@ import HomeView from '@/views/HomeView.vue'
 import MessagesView from '@/views/MessagesView.vue'
 import CreatePollView from '@/views/CreatePollView.vue'
 import ProfileView from '@/views/ProfileView.vue'
-import SettingsView from '@/views/SettingsView.vue'
 import NotificationsView from '@/views/NotificationsView.vue'
 
 
@@ -46,11 +45,6 @@ const router = createRouter({
       path: '/profile',
       name: 'profile',
       component: ProfileView,
-    },
-    {
-      path: '/settings',
-      name: 'settings',
-      component: SettingsView,
     },
     {
       path: '/notifications',
