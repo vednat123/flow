@@ -47,11 +47,6 @@ const router = createRouter({
       component: ProfileView,
     },
     {
-      path: '/settings',
-      name: 'settings',
-      component: SettingsView,
-    },
-    {
       path: '/notifications',
       name: 'notifications',
       component: NotificationsView,
