@@ -1,21 +1,67 @@
 import router from '@/router'
 
+function fetchAccounts(){
+    /** Fetches list of accounts
+     *  TODO: Rework to use firestore/whatever db we decide
+     *  FIX: Currently returns hardcoded list
+     * */
+    return [{'name': 'admin', 'password': 'admin'}, {'name':'Andrew', 'password': '1'}]
+}
 
-
+function addAccount(){
+    /** Function to add account to storage */
+}
 
 export function validateSignIn(signup) {
     // Validates account login or new account sign up
-    // Navigates to 
-    console.log('Validate login')
-    router.push('/home');
+    // Navigates to home page
+    let accounts = fetchAccounts()
+    let name = document.getElementById('username')
+    let password = document.getElementById('password')
+
+    if (!signup){   // Validate Login
+        for (var account in accounts){      
+            if (name.value === accounts[account].name){     // Validate Account name
+                if (password.value === accounts[account].password){     //Validate password match
+                    router.push('/home');   // Navigate to home page
+                    return
+                } 
+                else {    // Invalid password
+                    buildPanel(signup, 'Invalid Password.')
+                    return
+                }
+            }
+            else{
+                buildPanel(signup, 'Account name not found.')
+                return
+            }
+        }   // End for loop
+    }
+
+    else {   // Validate Sign up
+        let confirm_password = document.getElementById('confirm-password')
+
+        for (var account in accounts){ 
+            if (name.value === accounts[account].name){     //Break if account name exists
+                buildPanel(signup, 'Account name already exists.')
+                return
+            }
+        }
+        // Assuming valid account name
+        if (password.value === confirm_password.value){ // Check passwords match
+            // Add new account
+            addAccount()
+            router.push('/home');   // Navigate to home page
+            return
+        } else {
+            // Password mismatch
+            buildPanel(signup, 'Passwords do not match.')
+        }
+    }
 }
 
-export function showSignUp(){
-    // Make Panel showing sign up elements
-
-}
-
-export function buildPanel(signup=false){
+export function buildPanel(signup = false, error_str = ""){
+    console.log("Building panel with singup value ", signup)
     // Makes Input UI panel for login or sign up
     const loginbox = document.getElementById('login-box')
     loginbox.innerHTML = ''
@@ -30,6 +76,8 @@ export function buildPanel(signup=false){
     let confirm_button = document.createElement('button')
   
     err_msg.classList.add('error');
+    err_msg.id = 'error-msg'
+    err_msg.textContent = error_str
     name_label.for = 'username';
     name_label.textContent = 'Username:'
     name_input.id = 'username'
