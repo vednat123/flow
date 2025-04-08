@@ -11,9 +11,11 @@
       <div class="login-logo">
         <img :src="flowLogo" alt="Flow Logo" />
       </div>
-
-      <div class="login-box">
-        <h5 v-if="errorMsg" class="error">{{ errorMsg }}</h5>
+      <button @click="login" class="login-button">Login</button>
+      <button @click="signup" class="login-button">Sign Up</button>
+      
+      <div class="login-box" id="login-box">
+        <!-- <h5 v-if="errorMsg" class="error">{{ errorMsg }}</h5>
         
         <label for="username">Username:</label>
         <input
@@ -29,10 +31,8 @@
           v-model="password"
           type="password"
           placeholder="Enter Password"
-        />
+        /> -->
 
-        <button @click="login" class="login-button">Login</button>
-        <button @click="signup" class="login-button">Sign Up</button>
       </div>
     </div>
   </section>
@@ -40,6 +40,9 @@
 
 <script>
 import flowLogo from '@/assets/Flow-Logo.jpg'
+import { buildPanel } from '@/login'
+
+
 
 export default {
   name: 'Login',
@@ -53,18 +56,19 @@ export default {
   },
   methods: {
     login() {
-      if (!this.username || !this.password) {
-        this.errorMsg = 'Please fill in both username and password.'
-        return
-      }
+      buildPanel(false)
+      // if (!this.username || !this.password) {
+      //   this.errorMsg = 'Please fill in both username and password.'
+      //   return
+      // }
       // Example "login" logic:
-      alert('Login successful. In a real app, you would store a token and redirect.')
+      //alert('Login successful. In a real app, you would store a token and redirect.')
       // For now, just redirect to /home
-      this.$router.push('/home')
+      //this.$router.push('/home')
     },
     signup() {
       // Maybe you want a separate sign-up route, or do it here
-      alert('Sign up logic here. Or go to /signup?')
+      buildPanel(true)
     },
   },
 }
@@ -120,32 +124,8 @@ export default {
 .login-box {
   margin-top: 1rem;
 }
-.login-box label {
-  display: block;
-  color: white;
-  margin-top: 1rem;
-}
-.login-box input {
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid black;
-  background-color: rgba(137, 7, 7, 0.7);
-  color: white;
-}
-.login-button {
-  margin-top: 1rem;
-  background: crimson;
-  color: white;
-  border-radius: 30px;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-.login-button:hover {
-  background: #f03a5f;
-}
+
+
 
 .error {
   color: red;
