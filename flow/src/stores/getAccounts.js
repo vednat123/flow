@@ -15,6 +15,6 @@ const apiClient = axios.create({
   export default {
     getAccounts() {
       // Added onto baseURL
-      return apiClient.get('/jsonapi/')
+      return apiClient.get('/accounts')
     },
   }

@@ -1,11 +1,28 @@
 import router from '@/router'
+import { useAccountStore } from '@/stores/storeAccounts'
 
-function fetchAccounts(){
-    /** Fetches list of accounts
-     *  TODO: Rework to use firestore/whatever db we decide
-     *  FIX: Currently returns hardcoded list
-     * */
-    return [{'name': 'admin', 'password': 'admin'}, {'name':'1', 'password': '1'}]
+
+
+export function fetchAccounts() {
+    /** Calls API to web DB, then pinia store function
+     * to retrieve accounts and return list of dictionaries
+     */
+    const accountStore = useAccountStore();
+    accountStore.fetchAccounts().then(() => { //Load accounts into store
+        let temp = accountStore.accounts;
+        
+        console.log('Format: ', temp[0]['name'], typeof(temp[0]))
+    });
+
+    let accounts = []   // Store parsed data
+    for (let x in accountStore.accounts){
+        console.log(accountStore.accounts[x]['name'])
+        accounts.push(accountStore.accounts[x])
+    }
+    console.log('Retunring accounts ',accounts)
+
+    return accounts
+
 }
 
 function addAccount(){
@@ -16,6 +33,7 @@ export function validateSignIn(signup) {
     // Validates account login or new account sign up
     // Navigates to home page
     let accounts = fetchAccounts()
+
     let name = document.getElementById('username')
     let password = document.getElementById('password')
 
