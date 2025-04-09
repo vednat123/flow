@@ -8,11 +8,13 @@ export function fetchAccounts() {
      * to retrieve accounts and return list of dictionaries
      */
     const accountStore = useAccountStore();
-    accountStore.fetchAccounts().then(() => { //Load accounts into store
-        let temp = accountStore.accounts;
-        
-        console.log('Format: ', temp[0]['name'], typeof(temp[0]))
-    });
+    if (accountStore.accounts.length < 1){  // Initalize account list
+        accountStore.fetchAccounts().then(() => { //Load accounts into store
+            let temp = accountStore.accounts;
+            
+            console.log('Format: ', temp[0]['name'], typeof(temp[0]))
+        });
+    }
 
     let accounts = []   // Store parsed data
     for (let x in accountStore.accounts){
@@ -46,14 +48,15 @@ export function validateSignIn(signup) {
                 } 
                 else {    // Invalid password
                     buildPanel(signup, 'Invalid Password.')
-                    return
+                    
                 }
             }
             else{
                 buildPanel(signup, 'Account name not found.')
-                return
+                
             }
-        }   // End for loop
+        } 
+        return  // End for loop
     }
 
     else {   // Validate Sign up

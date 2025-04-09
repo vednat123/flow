@@ -1,7 +1,7 @@
 <script setup>
   import flowLogo from '@/assets/Flow-Logo.jpg'
   import getAccounts from '@/stores/getAccounts.js'
-  import {buildPanel, fetchAccounts} from '@/login'
+  import {buildPanel} from '@/login'
   import { onMounted } from 'vue'
 
   import { useAccountStore } from '@/stores/storeAccounts'
@@ -23,7 +23,7 @@
       </div>
 
       <div class="login-logo">
-        <img :src="flowLogo" alt="Flow Logo" />
+        <img :src="flowLogo" alt="Flow Logo" height="48" width="48" />
       </div>
     
       <button @click="login" class="login-button">Login</button>
