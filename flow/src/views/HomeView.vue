@@ -1,20 +1,6 @@
 <template>
   <div class="home-layout">
-    <aside class="sidebar-left">
-      <div class="logo-container">
-        <router-link to="/home">
-          <img :src="assets/Flow-Logo" alt="Flow Logo" class="flow-logo" />
-        </router-link>
-      </div>
-      <ul>
-        <li><router-link to="/home">Home</router-link></li>
-        <li><router-link to="/profile">Profile</router-link></li>
-        <li><router-link to="/messages">Messages</router-link></li>
-        <li><router-link to="/create-poll">Create Poll</router-link></li>
-        <li><router-link to="/notifications">Notifications</router-link></li>
-      </ul>
-    </aside>
-
+    <SidebarMenu />
 
     <main class="main-content">
       <h1 class="page-title">Recent Polls</h1>
@@ -72,8 +58,13 @@
 </template>
 
 <script>
+import SidebarMenu from '@/components/SidebarMenu.vue';
+
 export default {
   name: 'HomeView',
+  components: {
+    SidebarMenu
+  },
   data() {
     return {
       searchQuery: '',
