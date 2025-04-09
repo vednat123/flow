@@ -5,7 +5,7 @@ function fetchAccounts(){
      *  TODO: Rework to use firestore/whatever db we decide
      *  FIX: Currently returns hardcoded list
      * */
-    return [{'name': 'admin', 'password': 'admin'}, {'name':'Andrew', 'password': '1'}]
+    return [{'name': 'admin', 'password': 'admin'}, {'name':'1', 'password': '1'}]
 }
 
 function addAccount(){
