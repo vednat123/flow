@@ -1,16 +1,16 @@
 <script setup>
-import flowLogo from '@/assets/Flow-Logo.jpg'
-import getAccounts from '@/stores/getAccounts.js'
-import {buildPanel} from '@/login'
-import { onMounted } from 'vue'
+  import flowLogo from '@/assets/Flow-Logo.jpg'
+  import getAccounts from '@/stores/getAccounts.js'
+  import {buildPanel, fetchAccounts} from '@/login'
+  import { onMounted } from 'vue'
 
-onMounted(() => {
-  console.log('Mounting login..');
-  getAccounts.getAccounts()
-  .then((response) => { 
-      console.log('Printing data:',response.data)
-    }
-  ) });
+  import { useAccountStore } from '@/stores/storeAccounts'
+
+  const accountStore = useAccountStore()
+
+  onMounted(() => {
+    accountStore.fetchAccounts() // Stores accounts from DB in Pinia
+  })
 </script>
 
 <template>
