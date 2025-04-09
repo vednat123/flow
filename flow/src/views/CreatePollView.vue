@@ -347,6 +347,7 @@ button:hover {
 
 .card a:hover {
   text-decoration: underline;
+}
 
 .option-row {
   display: flex;
