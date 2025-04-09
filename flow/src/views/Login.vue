@@ -1,3 +1,17 @@
+<script setup>
+import flowLogo from '@/assets/Flow-Logo.jpg'
+import getAccounts from '@/stores/getAccounts.js'
+import {buildPanel} from '@/login'
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  console.log('Mounting login..');
+  getAccounts.getAccounts()
+  .then((response) => { 
+      console.log('Printing data:',response.data)
+    }
+  ) });
+</script>
 
 <template>
   <section class="login-page">
@@ -23,9 +37,6 @@
 </template>
 
 <script>
-import flowLogo from '@/assets/Flow-Logo.jpg'
-import { buildPanel } from '@/login'
-
 
 
 export default {

@@ -22,9 +22,14 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: path => path.replace(/^\/serpapi/, '')
       }
+    },
+    '/jsonapi': {
+        target: 'https://my-json-server.typicode.com/vednat123/flow',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/jsonapi/, '')
+      }
     }
-  },
-})
+  });
 
 
 
