@@ -103,6 +103,7 @@ import { getCards} from '@/api'
 import { Poll } from '@/Poll';
 import SidebarMenu from '@/components/SidebarMenu.vue';
 
+
 export default {
   name: 'CreatePollView',
   components: {
@@ -114,29 +115,12 @@ export default {
       options: ['', ''],
       allowMultiple: false,
       previewImage: null,
-      trends: null,  // Data to store API response
       showPanel: false,
       cardData : null,
     };
   },
-  async mounted() {
-      // Call the async function after the component is mounted
-    //
-  },
   methods: {
-    async showSuggestions(){
-      this.togglePanel()
-      this.cardData = await getCards();
-    },
-
-    togglePanel(){
-      this.showPanel = !this.showPanel 
-      if (this.showPanel){
-  
-      }
-    }
-  },
-   addOption() {
+    addOption() {
       this.options.push('');
     },
     handleImageUpload(event) {
@@ -158,6 +142,18 @@ export default {
       console.log('Poll Created:', poll);
       alert('Poll submitted! Check the console.');
     },
+    async showSuggestions(){
+      this.togglePanel()
+      this.cardData = await getCards();
+    },
+
+    togglePanel(){
+      this.showPanel = !this.showPanel 
+      if (this.showPanel){
+  
+      }
+    }
+  },
 };
 
 </script>
