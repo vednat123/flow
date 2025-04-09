@@ -17,12 +17,14 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': {
-        target: 'https://serpapi.com', // Your SerpAPI base URL
-        changeOrigin: true, // Needed for virtual hosted sites
-        rewrite: (path) => path.replace(/^\/api/, ''), // Optional: Remove /api prefix in the request
-      },
-    },
+      '/serpapi': {
+        target: 'https://serpapi.com',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/serpapi/, '')
+      }
+    }
   },
 })
+
+
 
