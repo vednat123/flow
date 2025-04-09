@@ -70,10 +70,36 @@
         </div>
       </div>
     </aside>
+
+    <div>
+      <button id="suggestion-panel" @click="showSuggestions">Feeling Stuck? Get Some Ideas!</button>
+
+      <div class="sliding-panel theme" :class="{ open: showPanel }" >
+        <button class="close-btn" @click="togglePanel">×</button>
+        <div class="card-container">
+          <!-- Loop through the cardData array and display each card -->
+          <div 
+            class="card" 
+            v-for="(card, index) in cardData" 
+            :key="index">
+            
+            <!-- Card content -->
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.description }}</p>
+            <a :href="card.link" target="_blank">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+
 </template>
 
 <script>
+
+
+import { getCards} from '@/api'
 import { Poll } from '@/Poll';
 import SidebarMenu from '@/components/SidebarMenu.vue';
 
@@ -88,10 +114,29 @@ export default {
       options: ['', ''],
       allowMultiple: false,
       previewImage: null,
+      trends: null,  // Data to store API response
+      showPanel: false,
+      cardData : null,
     };
   },
+  async mounted() {
+      // Call the async function after the component is mounted
+    //
+  },
   methods: {
-    addOption() {
+    async showSuggestions(){
+      this.togglePanel()
+      this.cardData = await getCards();
+    },
+
+    togglePanel(){
+      this.showPanel = !this.showPanel 
+      if (this.showPanel){
+  
+      }
+    }
+  },
+   addOption() {
       this.options.push('');
     },
     handleImageUpload(event) {
@@ -113,11 +158,28 @@ export default {
       console.log('Poll Created:', poll);
       alert('Poll submitted! Check the console.');
     },
-  },
 };
+
 </script>
 
 <style scoped>
+.sliding-panel {
+  position: fixed;
+  bottom: 0;
+  right: -300px; /* Hide off screen */
+  width: 300px;
+  height: 60%;
+  
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+
+.sliding-panel.open {
+  right: 0;
+}
+
 .home-container {
   display: flex;
   min-height: 100vh;
@@ -238,6 +300,54 @@ button:hover {
   margin-bottom: 1rem;
   color: #fff;
 }
+
+
+#suggestion-panel{
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  text-align: center;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1em;
+  color: #555;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #007BFF;
+}
+
+.card a:hover {
+  text-decoration: underline;
+
 .option-row {
   display: flex;
   align-items: center;
@@ -265,6 +375,7 @@ button:hover {
   color: white;
   font-size: 0.9rem;
   white-space: nowrap;
+
 }
 </style>
 

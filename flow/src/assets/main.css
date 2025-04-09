@@ -56,6 +56,11 @@
   background:  rgba(35, 34, 34, 0.66);
 }
 
+.theme{
+  background: rgba(53, 53, 53, 0.95);
+  border: 2px solid rgb(137, 7, 7,0.7);
+}
+
 .rect{
   height: auto;
   width: 250px;
