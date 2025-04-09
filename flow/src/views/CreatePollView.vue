@@ -21,11 +21,7 @@
           <input id="question" type="text" v-model="question" required />
         </div>
 
-        <div
-          class="form-group"
-          v-for="(option, index) in options"
-          :key="index"
-        >
+        <div class="form-group" v-for="(option, index) in options" :key="index">
           <label :for="'option-' + index">Option {{ index + 1 }}</label>
           <input
             :id="'option-' + index"
@@ -36,26 +32,58 @@
         </div>
 
         <button type="button" @click="addOption">Add Option</button>
+
+        <div class="form-group checkbox-row">
+          <label for="multiple">
+            <input type="checkbox" id="multiple" v-model="allowMultiple" />
+            Allow multiple answers
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="imageUpload">Upload Poll Image</label>
+          <input id="imageUpload" type="file" @change="handleImageUpload" accept="image/*" />
+        </div>
+
         <button type="submit">Create Poll</button>
       </form>
     </main>
 
-    <!-- Right Sidebar -->
+    <!-- Poll Preview -->
     <aside class="right-trending">
       <h2>Poll Preview</h2>
-      <div class="trend-item">
-        <h3>{{ question || 'Your poll question will appear here' }}</h3>
-        <ul>
-          <li v-for="(opt, i) in options" :key="i">{{ opt || 'Option ' + (i + 1) }}</li>
-        </ul>
+      <div class="poll-card">
+        <div class="poll-image" v-if="previewImage">
+          <img :src="previewImage" alt="Poll Preview" />
+        </div>
+
+        <div class="poll-content">
+          <h2 class="poll-question">{{ question || 'Your poll question will appear here' }}</h2>
+          <div
+            class="option-row"
+            v-for="(opt, i) in options"
+            :key="i"
+          >
+            <div class="progress-bar">
+              <div class="progress-fill" :style="{ width: '0%' }"></div>
+            </div>
+            <div class="vote-choice">
+              <input
+                :type="allowMultiple ? 'checkbox' : 'radio'"
+                :name="'preview-group'"
+                :id="'preview-opt-' + i"
+              />
+              <label :for="'preview-opt-' + i">{{ opt || 'Option ' + (i + 1) }} (0 votes)</label>
+            </div>
+          </div>
+        </div>
       </div>
     </aside>
   </div>
 </template>
 
-<!-- This is where I will keep the script -->
 <script>
-import { createPollData } from '@/pollLogic'; // using @ to point to src/
+import { Poll } from '@/Poll';
 
 export default {
   data() {
@@ -63,16 +91,31 @@ export default {
       question: '',
       options: ['', ''],
       allowMultiple: false,
+      previewImage: null,
     };
   },
   methods: {
     addOption() {
       this.options.push('');
     },
+    handleImageUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        this.previewImage = URL.createObjectURL(file);
+      }
+    },
     submitPoll() {
-      const pollData = createPollData(this.question, this.options, this.allowMultiple);
-      console.log('Poll Created:', pollData);
-      alert('Poll submitted! Check console for details.');
+      const cleanOptions = this.options.filter(opt => opt.trim() !== '');
+
+      const poll = new Poll({
+        name: this.question,
+        choosableOptions: cleanOptions,
+        allowsMultipleSelection: this.allowMultiple,
+        imagePath: this.previewImage,
+      });
+
+      console.log('Poll Created:', poll);
+      alert('Poll submitted! Check the console.');
     },
   },
 };
@@ -86,7 +129,6 @@ export default {
   color: white;
 }
 
-/* Left column (20%) */
 .left-nav {
   width: 20%;
   background-color: #111;
@@ -116,7 +158,6 @@ export default {
   background-color: crimson;
 }
 
-/* Center (60%) */
 .main-timeline {
   width: 60%;
   padding: 1rem;
@@ -134,7 +175,8 @@ label {
   display: block;
   margin-bottom: 0.25rem;
 }
-input {
+input[type="text"],
+input[type="file"] {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid crimson;
@@ -143,7 +185,19 @@ input {
   color: white;
 }
 
-/* Buttons */
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  color: white;
+  font-weight: bold;
+}
+.checkbox-row input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: crimson;
+}
+
 button {
   margin-top: 1rem;
   margin-right: 1rem;
@@ -158,7 +212,6 @@ button:hover {
   background-color: darkred;
 }
 
-/* Right column (20%) */
 .right-trending {
   width: 20%;
   padding: 1rem;
@@ -168,17 +221,54 @@ button:hover {
   color: crimson;
   margin-bottom: 1rem;
 }
-.trend-item {
+.poll-card {
   background-color: #222;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  border-radius: 8px;
   border: 1px solid crimson;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.poll-image img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid crimson;
+}
+.poll-content {
+  padding: 1rem;
+}
+.poll-question {
+  margin-bottom: 1rem;
   color: #fff;
 }
-
-/* This styles the poll preview box */
-.trend-item {
-  background-color: #222;
+.option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.progress-bar {
+  background-color: #333;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  flex-grow: 1;
+  max-width: 75%;
+}
+.progress-fill {
+  background-color: crimson;
+  height: 100%;
+  transition: width 0.4s ease;
+}
+.vote-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 </style>
+
