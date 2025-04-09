@@ -113,12 +113,30 @@ export function buildPanel(signup = false, error_str = ""){
         not_robot.textContent = 'I am not a Robot.'
 
         loginbox.appendChild(confirm_pass_label).appendChild(confirm_pass_input).appendChild(not_robot)
-    } else {
-
     }
     
     confirm_button.textContent = 'Confirm'
     confirm_button.classList.add('login-button')
     confirm_button.addEventListener("click", () => validateSignIn(signup));
+
+    [name_input, password_input].forEach(input => {
+        input.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                validateSignIn(signup);
+            }
+        });
+    });
+
+    if (signup) {
+        const confirm_pass_input = loginbox.querySelector('#confirm-password');
+        confirm_pass_input.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                validateSignIn(signup);
+            }
+        });
+    }
+
     loginbox.appendChild(confirm_button)
 }
