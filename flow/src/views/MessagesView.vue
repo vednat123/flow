@@ -1,59 +1,59 @@
 <template>
-  <div class="messages-wrapper">
-    <!-- Top Navigation Bar -->
-    <nav class="top-nav">
-      <ul>
-        <li><router-link to="/home">Home</router-link></li>
-        <li><router-link to="/profile">Profile</router-link></li>
-        <li><router-link to="/settings">Settings</router-link></li>
-        <li><router-link to="/messages">Messages</router-link></li>
-        <li><router-link to="/create-poll">Create Poll</router-link></li>
-        <li><router-link to="/notifications">Notifications</router-link></li>
-      </ul>
-    </nav>
-
-    <!-- Chat Layout -->
-    <div class="chat-layout">
-      <!-- Sidebar Chat List -->
-      <aside class="chat-sidebar">
-        <h2>Chats</h2>
+    <div class="messages-container">
+      <!-- Left Nav (20%) -->
+      <aside class="left-nav">
+        <h2>Menu</h2>
         <ul>
-          <li
-            v-for="(chat, index) in chats"
-            :key="index"
-            :class="{ active: activeChatIndex === index }"
-            @click="setActiveChat(index)"
-          >
-            <div class="chat-avatar">{{ chat.name.charAt(0) }}</div>
-            <span class="chat-name">{{ chat.name }}</span>
-          </li>
+          <li><router-link to="/home">Home</router-link></li>
+          <li><router-link to="/profile">Profile</router-link></li>
+          <li><router-link to="/messages">Messages</router-link></li>
+          <li><router-link to="/create-poll">Create Poll</router-link></li>
+          <li><router-link to="/notifications">Notifications</router-link></li>
         </ul>
       </aside>
-
-      <!-- Chat Area -->
-      <main class="chat-main" v-if="activeChat">
-        <header class="chat-header">
-          <h2>{{ activeChat.name }}</h2>
-        </header>
-
-        <div class="messages-scroll">
-          <div
-            v-for="(msg, index) in activeChat.messages"
-            :key="index"
-            :class="['message-bubble', msg.type]"
-          >
-            {{ msg.text }}
+  
+      <!-- Center (60%): Direct Messages area -->
+      <main class="main-content">
+        <h1>Direct Messages</h1>
+  
+        <div class="chat-container">
+          <!-- Chat list on the left side of the center content -->
+          <div class="chat-list">
+            <h2>Chats</h2>
+            <ul>
+              <li
+                v-for="(chat, index) in chats"
+                :key="index"
+                :class="{ active: activeChatIndex === index }"
+                @click="setActiveChat(index)"
+              >
+                {{ chat.name }}
+              </li>
+            </ul>
           </div>
-        </div>
-
-        <div class="chat-input-area">
-          <input
-            v-model="newMessage"
-            type="text"
-            placeholder="Type your message..."
-            @keyup.enter="sendMessage"
-          />
-          <button @click="sendMessage">Send</button>
+  
+          <!-- Chat messages on the right side of the center content -->
+          <div class="chat-messages" v-if="activeChat">
+            <h2>{{ activeChat.name }}</h2>
+            <div class="messages-list">
+              <div
+                v-for="(msg, msgIndex) in activeChat.messages"
+                :key="msgIndex"
+                :class="['message', msg.type]"
+              >
+                {{ msg.text }}
+              </div>
+            </div>
+            <div class="message-input">
+              <input
+                v-model="newMessage"
+                type="text"
+                placeholder="Type your message..."
+                @keyup.enter="sendMessage"
+              />
+              <button @click="sendMessage">Send</button>
+            </div>
+          </div>
         </div>
       </main>
     </div>
