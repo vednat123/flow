@@ -53,6 +53,31 @@
   </div>
 </template>
 
+<!-- This is where I will keep the script -->
+<script>
+import { createPollData } from '@/pollLogic'; // using @ to point to src/
+
+export default {
+  data() {
+    return {
+      question: '',
+      options: ['', ''],
+      allowMultiple: false,
+    };
+  },
+  methods: {
+    addOption() {
+      this.options.push('');
+    },
+    submitPoll() {
+      const pollData = createPollData(this.question, this.options, this.allowMultiple);
+      console.log('Poll Created:', pollData);
+      alert('Poll submitted! Check console for details.');
+    },
+  },
+};
+</script>
+
 <style scoped>
 .home-container {
   display: flex;
@@ -150,5 +175,10 @@ button:hover {
   border-radius: 8px;
   border: 1px solid crimson;
   color: #fff;
+}
+
+/* This styles the poll preview box */
+.trend-item {
+  background-color: #222;
 }
 </style>
