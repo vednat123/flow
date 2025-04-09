@@ -1,16 +1,7 @@
 <template>
   <div class="home-container">
     <!-- Left Sidebar -->
-    <aside class="left-nav">
-      <h2>Menu</h2>
-      <ul>
-        <li><router-link to="/home">Home</router-link></li>
-        <li><router-link to="/profile">Profile</router-link></li>
-        <li><router-link to="/messages">Messages</router-link></li>
-        <li><router-link to="/create-poll">Create Poll</router-link></li>
-        <li><router-link to="/notifications">Notifications</router-link></li>
-      </ul>
-    </aside>
+    <SidebarMenu />
 
     <!-- Main Content -->
     <main class="main-timeline">
@@ -84,8 +75,13 @@
 
 <script>
 import { Poll } from '@/Poll';
+import SidebarMenu from '@/components/SidebarMenu.vue';
 
 export default {
+  name: 'CreatePollView',
+  components: {
+    SidebarMenu,
+  },
   data() {
     return {
       question: '',
