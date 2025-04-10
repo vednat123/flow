@@ -151,6 +151,7 @@ export default {
         allowMultiple: poll.allowsMultipleSelection,
         imagePath: poll.imagePath,
         createdAt: new Date().toISOString(),
+        likes: 0,
       })
 
       this.$router.push('/home')

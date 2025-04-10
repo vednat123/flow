@@ -47,6 +47,9 @@
         </div>
 
         <button class="theme-button" @click="submitVote(index)">Vote</button>
+        <button class="theme-button" @click="toggleSave(index)">
+          {{ savedPolls[poll.id] ? '💾 Saved' : '📁 Save' }}
+        </button>
       </div>
     </main>
 
@@ -72,6 +75,7 @@ export default {
       searchQuery: '',
       polls: [],
       voteSelections: {},
+      savedPolls: JSON.parse(localStorage.getItem('savedPolls') || '{}'),
       trending: [
         'Cats vs. Dogs Poll',
         'Best Programming Language Poll',
@@ -140,11 +144,25 @@ export default {
       this.voteSelections[index] = poll.allowMultiple ? [] : null
       localStorage.setItem('flow_polls', JSON.stringify(this.polls))
     },
-  },
+    toggleSave(index) {
+      const poll = this.polls[index];
+      const pollId = poll.id;
 
-  mounted() {
-    this.polls = loadPolls()
+      if (!pollId) return;
+
+      if (this.savedPolls[pollId]) {
+        delete this.savedPolls[pollId]; // Vue 3
+      } else {
+        this.savedPolls[pollId] = true; // Vue 3
+      }
+
+      localStorage.setItem('savedPolls', JSON.stringify(this.savedPolls));
+    },
+
   },
+  mounted() {
+    this.polls = loadPolls();
+  }
 }
 </script>
 
@@ -262,4 +280,12 @@ input[type="checkbox"] {
 .search-bar::placeholder {
   color: #ccc;
 }
+
+.poll-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 </style>
