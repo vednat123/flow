@@ -1,0 +1,51 @@
+Om Sathe - 100826594
+Contributions: 
+- Contribuion on CreatePollView.vue
+    •
+    •
+    •
+    •
+    •
+    •
+- Contribuion on HomeView.vue
+    •
+    •
+    •
+    •
+    •
+    •
+- Contribuion on SavedView.vue
+    •
+    •
+    •
+    •
+    •
+    •
+- Contribuion on index.js (Routing)
+    •
+    •
+    •
+    •
+    •
+    •
+- Contribuion on SideBarMenu.vue
+    •
+    •
+    •
+    •
+    •
+    •
+- Contribuion on project directory and file organization
+    •
+    •
+    •
+    •
+    •
+    •
+- Contribuion on Poll.js
+    •
+    •
+    •
+    •
+    •
+    •

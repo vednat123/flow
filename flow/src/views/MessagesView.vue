@@ -115,15 +115,18 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
 .chat-header {
   padding: 1rem;
   border-bottom: 1px solid crimson;
   background-color: #111;
 }
+
 .chat-header h2 {
   margin: 0;
   color: crimson;
 }
+
 .messages-scroll {
   flex-grow: 1;
   padding: 1.5rem;
@@ -132,6 +135,7 @@ export default {
   flex-direction: column;
   gap: 0.8rem;
 }
+
 .message-bubble {
   max-width: 70%;
   padding: 0.8rem 1.2rem;
@@ -140,22 +144,26 @@ export default {
   line-height: 1.4;
   word-wrap: break-word;
 }
+
 .message-bubble.sent {
   background-color: crimson;
   color: white;
   align-self: flex-end;
 }
+
 .message-bubble.received {
   background-color: #333;
   color: white;
   align-self: flex-start;
 }
+
 .chat-input-area {
   padding: 1rem;
   border-top: 1px solid #222;
   display: flex;
   gap: 0.75rem;
 }
+
 .chat-input-area input {
   flex: 1;
   padding: 0.75rem 1rem;
@@ -165,6 +173,7 @@ export default {
   color: white;
   font-size: 1rem;
 }
+
 .chat-input-area button {
   background-color: crimson;
   color: white;
@@ -175,6 +184,7 @@ export default {
   font-weight: bold;
   transition: background 0.3s;
 }
+
 .chat-input-area button:hover {
   background-color: #ff5f7a;
 }
@@ -187,14 +197,17 @@ export default {
   box-sizing: border-box;
   overflow-y: auto;
 }
+
 .right-sidebar h2 {
   color: crimson;
   margin-bottom: 1rem;
 }
+
 .right-sidebar ul {
   list-style: none;
   padding: 0;
 }
+
 .right-sidebar li {
   display: flex;
   align-items: center;
@@ -205,12 +218,15 @@ export default {
   background-color: #222;
   transition: background 0.3s;
 }
+
 .right-sidebar li:hover {
   background-color: #333;
 }
+
 .right-sidebar li.active {
   background-color: crimson;
 }
+
 .chat-avatar {
   width: 40px;
   height: 40px;
@@ -225,6 +241,7 @@ export default {
   font-size: 1.2rem;
   background: #fff;
 }
+
 .chat-name {
   font-size: 1.1rem;
   font-weight: bold;
