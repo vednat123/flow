@@ -58,3 +58,17 @@ Contributions:
 	Added a message asking the user to confirm they want to log out
 	Merged common css styles into a main.css file and cleaned up local styles
     Added basic profile editing functionality
+
+Andrew Clegg - 100745892
+Contributions:
+    - Developed Login page
+        • Login.vue 
+        • Login.js
+    - Implemented Account storage with my-json-server.typecode and Pinia
+        • getAccount.js, storeAccount.js
+    - Implemented Custom API on CreatePollView page
+        • SerpAPI web request
+        • api.js
+        • Helped in CreatePollView.vue
+    - Implemented Global css themeing
+        • incorporated bulma classes
