@@ -9,8 +9,10 @@
       <form @submit.prevent="submitPoll">
         <div class="form-group">
           <label for="question">Poll Question</label>
-          <input id="question" type="text" v-model="question" required />
+          <input id="question" type="text" v-model="question" required maxlength="70" />
         </div>
+
+        <small class="char-limit-text">(Poll question can have up to 70 characters maximum)</small>
 
         <div class="form-group" v-for="(option, index) in options" :key="index">
           <label :for="'option-' + index">Option {{ index + 1 }}</label>
@@ -19,8 +21,10 @@
             type="text"
             v-model="options[index]"
             required
+            maxlength="16"
           />
         </div>
+        <small class="char-limit-text">(Each option can have up to 16 characters maximum)</small>
 
         <button type="button" class="theme-button" @click="addOption">Add Option</button>
 
@@ -170,9 +174,7 @@ export default {
     return { router: useRouter() }   
   },
 }
-
 </script>
-
 
 <style scoped>
 .sliding-panel {
@@ -186,6 +188,7 @@ export default {
   z-index: 1000;
   overflow-y: auto; /* Enables scrolling if content overflows vertically */
 }
+
 .sliding-panel.open {
   right: 0;
   transform: translateX(0); /* Slide in panel when active */
@@ -195,13 +198,16 @@ export default {
   color: crimson;
   margin-bottom: 1.5rem;
 }
+
 .form-group {
   margin-bottom: 1rem;
 }
+
 label {
   display: block;
   margin-bottom: 0.25rem;
 }
+
 input[type="text"],
 input[type="file"] {
   width: 100%;
@@ -229,8 +235,6 @@ input[type="file"] {
   max-height: 200px;
   border-bottom: 1px solid crimson;
 }
-
-
 
 #suggestion-panel{
   position: fixed;
@@ -324,6 +328,14 @@ input[type="file"] {
   font-size: 0.9rem;
   white-space: nowrap;
 
+}
+
+.char-limit-text {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-left: 0.25rem;
+  padding-bottom: 10px;
+  display: block;
 }
 </style>
 
