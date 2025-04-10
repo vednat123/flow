@@ -1,7 +1,13 @@
 AI Prompts Used.
 
 1. How can I configure my vue Vite project to work around CORS error with *example endpoint*
-Response: Showed how to alter vite.config to allow policy
+Response: Showed how to alter vite.config to allow policy.
 
 2. How can I use Pinia to access variables in external scripts?
-Response: Helped with storeAccount.js and getAccount.js files
+Response: Helped with storeAccount.js and getAccount.js files.
+
+3. How to approach adding a feature to allow poll creators to allow multiple voteable answers at the same time.
+Response: Create a checkable box which will let the user enable the ability to allow voters to have multiple answers.
+
+4. How to approch updating the progress bars when user submits a vote.
+Response: Suggested to recalculate percentages then let vue's reactivity system reflect the new percentages.
