@@ -1,6 +1,6 @@
 Om Sathe - 100826594
 Contributions: 
-- Contribuion on CreatePollView.vue
+- Contribution on CreatePollView.vue
     • Worked on creating the logic behind the creation of the polls
     • Worked on features of the polls to allow voting on the polls
     • Worked on creating a preview before poll is created
@@ -8,45 +8,52 @@ Contributions:
     • Worked on creating restrictions on creating a poll to avoid issues like text overflow 
     • Worked on design of poll creation layout 
     
-- Contribuion on HomeView.vue
+- Contribution on HomeView.vue
     • Implimented voting button and feature on polls
     • Implimented Save button and feature on polls
 
-- Contribuion on SavedView.vue
+- Contribution on SavedView.vue
     • Created file 
     • Implimented logic behind saving a poll and displaying saved polls on this page
 
-- Contribuion on index.js (Routing)
+- Contribution on index.js (Routing)
     • Helped create the routing to ensure each route connects to their correct pages
   
-- Contribuion on SideBarMenu.vue
+- Contribution on SideBarMenu.vue
     • Created file
     • Helped work on design of menu sidebar
     • Helped ensure functionality of menu sidebar
 
-- Contribuion on project directory and file organization
+- Contribution on project directory and file organization
     • Helped clean directory and organize files
     • Helped clean up and create css classes to make sure we avoid redunduncies in our files more readable and organized
     • Created components to avoid repetition of code which were implimented within many files to help keep project organized
     • Helped create a task board so team can work efficiently and purposly
     • Helped create a consistent layout within all View files
     
-- Contribuion on Poll.js
+- Contribution on Poll.js
     •With the entire team brainstormed ideas for Poll Class
     •Implimented the Poll class
 
 
 Sahil Bilai - 100881460
 Contributions: 
-- Contribuion on MessagesView.vue
+- Contribution on MessagesView.vue
     • Redesigned the entire chat layout to enhance usability and responsiveness
     • Implemented a full-width messaging panel with better chat separation and modern structure
     • Styled chat bubbles with crimson and black theme to match the rest of the app
     • Added avatars and hover effects to chat list for a more interactive experience
     • Enhanced input area and scroll behavior for improved real-time interaction 
 
-- Contribuion on HomeView.vue
+- Contribution on HomeView.vue
     • Implemented a search bar to filter polls by keywords dynamically
     • Styled the search input to match the dark crimson theme of the app
     • Connected search functionality to computed properties to ensure reactive filtering
     • Cleaned up and reorganized markup for better maintainability and UX 
+
+David Kelly - 100876954
+Contributions:
+	Created a basic template for ProfileView page with placeholder data
+	Added functionality to log in by pressing the enter key
+	Added a message asking the user to confirm they want to log out
+	Merged common css styles into a main.css file and cleaned up local styles
