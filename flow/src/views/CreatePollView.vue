@@ -328,7 +328,14 @@ input[type="file"] {
 .card h3 {
   font-size: 1.2em;
   margin-bottom: 10px;
-  color:  rgba(53, 53, 53, 0.95);
+  color:  white;
+  text-shadow:
+    -0.75px -0.75px 0 black,
+    0.75px -0.75px 0 black,
+    -0.75px  0.75px 0 black,
+    0.75px  0.75px 0 black;
+    font-weight: bold;
+
 }
 
 .card p {
@@ -340,7 +347,7 @@ input[type="file"] {
   display: inline-block;
   margin-top: 10px;
   text-decoration: none;
-  color: #031d38;
+  color: lightskyblue;
 }
 
 .card a:hover {
