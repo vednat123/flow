@@ -15,7 +15,7 @@ console.log(userStore.user)
         <img :src="profile.photo" width="250" height="250">
         <div class="user-info">
           <h1> {{ userStore.user }} </h1>
-          <span class="username">@{{userStore.user}}</span>
+          <span class="username">@{{userStore.user.replace(/\s+/g, '')}}</span>
         </div>
       </div>
       <div class="profile-bio">
