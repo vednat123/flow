@@ -58,36 +58,17 @@
 </template>
 
 <script>
-import SidebarMenu from '@/components/SidebarMenu.vue';
+import { loadPolls } from '@/stores/pollStorage'   
+import SidebarMenu from '@/components/SidebarMenu.vue'
 
 export default {
   name: 'HomeView',
-  components: {
-    SidebarMenu
-  },
+  components: { SidebarMenu },
+
   data() {
     return {
       searchQuery: '',
-      polls: [
-        {
-          question: 'Is Vue better than React?',
-          image: 'https://picsum.photos/600/300?random=1',
-          options: ['Yes', 'No', 'Maybe'],
-          votes: { Yes: 10, No: 4, Maybe: 6 },
-        },
-        {
-          question: 'What is your favorite color?',
-          image: null,
-          options: ['Red', 'Blue', 'Green', 'Other'],
-          votes: { Red: 12, Blue: 8, Green: 5, Other: 2 },
-        },
-        {
-          question: 'Which JS framework do you prefer?',
-          image: 'https://picsum.photos/600/300?random=2',
-          options: ['Vue', 'React', 'Angular'],
-          votes: { Vue: 15, React: 10, Angular: 5 },
-        },
-      ],
+      polls: [],                 
       trending: [
         'Cats vs. Dogs Poll',
         'Best Programming Language Poll',
@@ -95,6 +76,7 @@ export default {
       ],
     }
   },
+
   computed: {
     filteredPolls() {
       const query = this.searchQuery.toLowerCase()
@@ -103,12 +85,17 @@ export default {
       )
     },
   },
+
   methods: {
     getOptionPercent(poll, option) {
       const total = Object.values(poll.votes).reduce((a, b) => a + b, 0)
       if (total === 0) return 0
       return ((poll.votes[option] / total) * 100).toFixed(1)
     },
+  },
+
+  mounted() {
+    this.polls = loadPolls()
   },
 }
 </script>

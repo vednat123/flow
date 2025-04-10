@@ -98,18 +98,15 @@
 </template>
 
 <script>
-
-
-import { getCards} from '@/api'
-import { Poll } from '@/Poll';
-import SidebarMenu from '@/components/SidebarMenu.vue';
-
+import { getCards } from '@/api'
+import { Poll } from '@/Poll'
+import { savePoll } from '@/stores/pollStorage'      
+import { useRouter } from 'vue-router'               
+import SidebarMenu from '@/components/SidebarMenu.vue'
 
 export default {
   name: 'CreatePollView',
-  components: {
-    SidebarMenu,
-  },
+  components: { SidebarMenu },
   data() {
     return {
       question: '',
@@ -117,47 +114,62 @@ export default {
       allowMultiple: false,
       previewImage: null,
       showPanel: false,
-      cardData : null,
-    };
+      cardData: null,
+    }
   },
   methods: {
     addOption() {
-      this.options.push('');
+      this.options.push('')
     },
     handleImageUpload(event) {
-      const file = event.target.files[0];
+      const file = event.target.files[0]
       if (file) {
-        this.previewImage = URL.createObjectURL(file);
+        this.previewImage = URL.createObjectURL(file)
       }
     },
+
     submitPoll() {
-      const cleanOptions = this.options.filter(opt => opt.trim() !== '');
+      const cleanOptions = this.options.filter(opt => opt.trim() !== '')
+      if (!this.question.trim() || cleanOptions.length < 2) {
+        alert('Enter a question and at least two options.')
+        return
+      }
 
       const poll = new Poll({
         name: this.question,
         choosableOptions: cleanOptions,
         allowsMultipleSelection: this.allowMultiple,
         imagePath: this.previewImage,
-      });
+      })
 
-      console.log('Poll Created:', poll);
-      alert('Poll submitted! Check the console.');
+      savePoll({
+        question: poll.name,
+        options: poll.choosableOptions,
+        votes: new Array(poll.numOfOptions).fill(0),
+        allowMultiple: poll.allowsMultipleSelection,
+        imagePath: poll.imagePath,
+        createdAt: new Date().toISOString(),
+      })
+
+      this.$router.push('/home')
     },
-    async showSuggestions(){
+
+
+    async showSuggestions() {
       this.togglePanel()
-      this.cardData = await getCards();
+      this.cardData = await getCards()
     },
-
-    togglePanel(){
-      this.showPanel = !this.showPanel 
-      if (this.showPanel){
-  
-      }
-    }
+    togglePanel() {
+      this.showPanel = !this.showPanel
+    },
   },
-};
+  setup() {
+    return { router: useRouter() }   
+  },
+}
 
 </script>
+
 
 <style scoped>
 .sliding-panel {
