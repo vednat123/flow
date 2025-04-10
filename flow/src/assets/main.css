@@ -216,6 +216,7 @@ h3{
 
 /* FOR SCROLLBAR */
 
+/*Om - The red bar with style is broken and looks generic right now and will fix later unless someone else can figure it out*/
 .main-timeline{
   overflow-y: auto;
   height: 100vh; /* full height */
