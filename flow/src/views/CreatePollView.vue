@@ -149,6 +149,7 @@ export default {
       })
 
       savePoll({
+        id: poll.id,
         question: poll.name,
         options: poll.choosableOptions,
         votes: new Array(poll.numOfOptions).fill(0),

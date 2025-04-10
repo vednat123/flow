@@ -1,5 +1,5 @@
 <template>
-  <div class="home-layout">
+  <div class="home-container">
     <SidebarMenu />
 
     <main class="main-timeline">
@@ -53,22 +53,19 @@
       </div>
     </main>
 
-    <aside class="right-trending">
-      <h2>Trending Polls</h2>
-      <div class="trend-item" v-for="(trend, idx) in trending" :key="idx">
-        {{ trend }}
-      </div>
-    </aside>
+    <TrendingPolls />
   </div>
 </template>
 
 <script>
 import { loadPolls } from '@/stores/pollStorage'
 import SidebarMenu from '@/components/SidebarMenu.vue'
+import '@/assets/pollStyles.css'
+import TrendingPolls from '@/components/TrendingPolls.vue'
 
 export default {
   name: 'HomeView',
-  components: { SidebarMenu },
+  components: { SidebarMenu, TrendingPolls},
 
   data() {
     return {
@@ -167,104 +164,6 @@ export default {
 </script>
 
 <style scoped>
-.home-layout {
-  display: flex;
-  min-height: 100vh;
-  background-color: #000;
-  color: white;
-}
-
-.main-timeline {
-  width: 60%;
-  padding: 1rem;
-  box-sizing: border-box;
-  border-right: 2px solid crimson;
-}
-
-.page-title {
-  margin-bottom: 1rem;
-  color: crimson;
-  text-align: center;
-}
-
-.poll-card {
-  background-color: #222;
-  border: 1px solid crimson;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  padding: 1rem;
-}
-
-.poll-question {
-  margin-bottom: 1rem;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.poll-image img {
-  width: 100%;
-  object-fit: cover;
-  display: block;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid crimson;
-}
-
-
-.option-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.option-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: white;
-  white-space: nowrap;
-  font-size: 0.95rem;
-  width: 200px;
-  flex-shrink: 0;
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-  accent-color: crimson;
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-.progress-bar {
-  flex-grow: 1;
-  background-color: #333;
-  height: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  background-color: crimson;
-  height: 100%;
-  transition: width 0.4s ease;
-}
-
-.right-trending {
-  width: 20%;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-
-.trend-item {
-  background-color: #222;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid crimson;
-  color: #fff;
-}
 
 .search-bar {
   width: 100%;
@@ -279,13 +178,6 @@ input[type="checkbox"] {
 
 .search-bar::placeholder {
   color: #ccc;
-}
-
-.poll-buttons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
 }
 
 </style>

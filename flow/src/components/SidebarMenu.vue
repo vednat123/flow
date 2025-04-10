@@ -19,7 +19,7 @@ console.log(userStore.user)
       <li><router-link to="/profile">Profile</router-link></li>
       <li><router-link to="/messages">Messages</router-link></li>
       <li><router-link to="/create-poll">Create Poll</router-link></li>
-      <li><router-link to="/notifications">Notifications</router-link></li>
+      <li><router-link to="/saved">Saved</router-link></li>
       <li>
         <button @click="showLogoutConfirm = true" class="logout-button">Logout</button>
       </li>

@@ -110,43 +110,10 @@ export default {
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Left Sidebar (menu) */
-.left-nav {
-  width: 20%;
-  background-color: #111;
-  padding: 1rem;
-  box-sizing: border-box;
-  border-right: 2px solid crimson;
-}
-.left-nav h2 {
-  margin-bottom: 1rem;
-  color: crimson;
-}
-.left-nav ul {
-  list-style: none;
-  padding: 0;
-}
-.left-nav li {
-  margin: 0.5rem 0;
-}
-.left-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  transition: background 0.3s;
-}
-.left-nav a:hover {
-  background-color: crimson;
-}
-
-/* Middle Chat Column */
+/* Middle Chat Column OVERWRITES main.css main-timeline*/
 .main-timeline {
-  width: 60%;
   display: flex;
   flex-direction: column;
-  background-color: #000;
-  border-right: 2px solid crimson;
 }
 .chat-header {
   padding: 1rem;

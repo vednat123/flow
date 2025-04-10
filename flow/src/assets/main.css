@@ -22,6 +22,12 @@
   border-right: 2px solid crimson;
 }
 
+.page-title {
+  margin-bottom: 1rem;
+  color: crimson;
+  text-align: center;
+}
+
 /* RIGHT SIDEBAR */
 
 .right-trending {

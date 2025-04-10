@@ -5,7 +5,7 @@ import HomeView from '@/views/HomeView.vue'
 import MessagesView from '@/views/MessagesView.vue'
 import CreatePollView from '@/views/CreatePollView.vue'
 import ProfileView from '@/views/ProfileView.vue'
-import NotificationsView from '@/views/NotificationsView.vue'
+import SavedView from '@/views/SavedView.vue'
 
 
 const router = createRouter({
@@ -41,9 +41,9 @@ const router = createRouter({
       component: ProfileView,
     },
     {
-      path: '/notifications',
-      name: 'notifications',
-      component: NotificationsView,
+      path: '/saved',
+      name: 'saved',
+      component: SavedView,
     },
   ],
 })

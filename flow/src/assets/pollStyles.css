@@ -1,0 +1,70 @@
+.poll-card {
+    background-color: #222;
+    border: 1px solid crimson;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    padding: 1rem;
+  }
+  
+  .poll-question {
+    margin-bottom: 1rem;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .poll-image img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid crimson;
+  }
+  
+  .option-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .option-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    white-space: nowrap;
+    font-size: 0.95rem;
+    width: 200px;
+    flex-shrink: 0;
+  }
+  
+  input[type="radio"],
+  input[type="checkbox"] {
+    accent-color: crimson;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  
+  .progress-bar {
+    flex-grow: 1;
+    background-color: #333;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    background-color: crimson;
+    height: 100%;
+    transition: width 0.4s ease;
+  }
+  
+  .poll-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
