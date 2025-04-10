@@ -2,3 +2,6 @@ AI Prompts Used.
 
 1. How can I configure my vue Vite project to work around CORS error with *example endpoint*
 Response: Showed how to alter vite.config to allow policy
+
+2. How can I use Pinia to access variables in external scripts?
+Response: Helped with storeAccount.js and getAccount.js files
