@@ -110,36 +110,6 @@ export default {
   color: white;
 }
 
-
-.sidebar-left {
-  width: 20%;
-  background-color: #111;
-  padding: 1rem;
-  box-sizing: border-box;
-  border-right: 2px solid crimson;
-}
-.sidebar-left h2 {
-  margin-bottom: 1rem;
-  color: crimson;
-}
-.sidebar-left ul {
-  list-style: none;
-  padding: 0;
-}
-.sidebar-left li {
-  margin-bottom: 0.5rem;
-}
-.sidebar-left a {
-  color: white;
-  text-decoration: none;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  transition: background 0.3s;
-}
-.sidebar-left a:hover {
-  background-color: crimson;
-}
-
 /* CENTER (Main content) */
 .main-content {
   width: 60%;
@@ -153,7 +123,7 @@ export default {
   text-align: center;
 }
 
-/* Options + progress bar */
+/* Options */
 .option-row {
   margin-bottom: 0.75rem;
 }
@@ -161,17 +131,7 @@ export default {
   margin-bottom: 0.25rem;
   color: #fff;
 }
-.progress-bar {
-  background-color: #333;
-  height: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-.progress-fill {
-  background-color: crimson;
-  height: 100%;
-  transition: width 0.4s ease;
-}
+
 
 /* RIGHT SIDEBAR */
 

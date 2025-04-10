@@ -307,18 +307,10 @@ input[type="file"] {
   margin-bottom: 1rem;
 }
 .progress-bar {
-  background-color: #333;
-  height: 10px;
-  border-radius: 5px;
-  overflow: hidden;
   flex-grow: 1;
   max-width: 75%;
 }
-.progress-fill {
-  background-color: crimson;
-  height: 100%;
-  transition: width 0.4s ease;
-}
+
 .vote-choice {
   display: flex;
   align-items: center;
