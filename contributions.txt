@@ -1,51 +1,36 @@
 Om Sathe - 100826594
 Contributions: 
 - Contribuion on CreatePollView.vue
-    •
-    •
-    •
-    •
-    •
-    •
+    • Worked on creating the logic behind the creation of the polls
+    • Worked on features of the polls to allow voting on the polls
+    • Worked on creating a preview before poll is created
+    • Worked on implenting features to add images to polls and allow the poll creator to allow multiple votable answers
+    • Worked on creating restrictions on creating a poll to avoid issues like text overflow 
+    • Worked on design of poll creation layout 
+    
 - Contribuion on HomeView.vue
-    •
-    •
-    •
-    •
-    •
-    •
+    • Implimented voting button and feature on polls
+    • Implimented Save button and feature on polls
+
 - Contribuion on SavedView.vue
-    •
-    •
-    •
-    •
-    •
-    •
+    • Created file 
+    • Implimented logic behind saving a poll and displaying saved polls on this page
+
 - Contribuion on index.js (Routing)
-    •
-    •
-    •
-    •
-    •
-    •
+    • Helped create the routing to ensure each route connects to their correct pages
+  
 - Contribuion on SideBarMenu.vue
-    •
-    •
-    •
-    •
-    •
-    •
+    • Created file
+    • Helped work on design of menu sidebar
+    • Helped ensure functionality of menu sidebar
+
 - Contribuion on project directory and file organization
-    •
-    •
-    •
-    •
-    •
-    •
+    • Helped clean directory and organize files
+    • Helped clean up and create css classes to make sure we avoid redunduncies in our files more readable and organized
+    • Created components to avoid repetition of code which were implimented within many files to help keep project organized
+    • Helped create a task board so team can work efficiently and purposly
+    • Helped create a consistent layout within all View files
+    
 - Contribuion on Poll.js
-    •
-    •
-    •
-    •
-    •
-    •
+    •With the entire team brainstormed ideas for Poll Class
+    •Implimented the Poll class
