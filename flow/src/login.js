@@ -1,6 +1,6 @@
 import router from '@/router'
 import { useAccountStore, useLoggedIn } from '@/stores/storeAccounts'
-
+import $ from 'jquery'  // This script uses jquery to validate sign in info
 
 
 
@@ -28,125 +28,109 @@ export function fetchAccounts() {
 
 }
 
-function addAccount(){
-    /** Function to add account to storage */
-}
-
 export function validateSignIn(signup) {
     // Validates account login or new account sign up
     // Navigates to home page
-    let accounts = fetchAccounts()
 
-    let name = document.getElementById('username')
-    let password = document.getElementById('password')
-
-    if (!signup){   // Validate Login
-        for (var account in accounts){      
-            if (name.value === accounts[account].name){     // Validate Account name
-                if (password.value === accounts[account].password){     //Validate password match
-                    const userStore = useLoggedIn();
-                    userStore.user = name.value;
-                    router.push('/home');   // Navigate to home page
-                    return
-                } 
-                else {    // Invalid password
-                    buildPanel(signup, 'Invalid Password.')
-                    
+        let accounts = fetchAccounts();
+    
+        let name = $('#username');
+        let password = $('#password');
+    
+        if (!signup) {   // Validate Login
+            for (var account in accounts) {
+                if (name.val() === accounts[account].name) {     // Validate Account name
+                    if (password.val() === accounts[account].password) {     // Validate password match
+                        const userStore = useLoggedIn();
+                        userStore.user = name.val();
+                        router.push('/home');   // Navigate to home page
+                        return;
+                    } 
+                    else {    // Invalid password
+                        buildPanel(signup, 'Invalid Password.');
+                        return;
+                    }
                 }
             }
-            else{
-                buildPanel(signup, 'Account name not found.')
-                
+            buildPanel(signup, 'Account name not found.');  // If account name is not found
+            return;
+        }
+    
+        else {   // Validate Sign up
+            let confirm_password = $('#confirm-password');
+    
+            for (var account in accounts) { 
+                if (name.val() === accounts[account].name) {     // Break if account name exists
+                    buildPanel(signup, 'Account name already exists.');
+                    return;
+                }
             }
-        } 
-        return  // End for loop
-    }
-
-    else {   // Validate Sign up
-        let confirm_password = document.getElementById('confirm-password')
-
-        for (var account in accounts){ 
-            if (name.value === accounts[account].name){     //Break if account name exists
-                buildPanel(signup, 'Account name already exists.')
-                return
+    
+            // Assuming valid account name
+            if (password.val() === confirm_password.val()) { // Check passwords match
+                // Add new account
+                const userStore = useLoggedIn();
+                userStore.user = name.val();
+                router.push('/home');   // Navigate to home page
+                return;
+            } else {
+                // Password mismatch
+                buildPanel(signup, 'Passwords do not match.');
             }
         }
-        // Assuming valid account name
-        if (password.value === confirm_password.value){ // Check passwords match
-            // Add new account
-            addAccount()
-            const userStore = useLoggedIn();
-            userStore.user = name.value;
-            router.push('/home');   // Navigate to home page
-            return
-        } else {
-            // Password mismatch
-            buildPanel(signup, 'Passwords do not match.')
-        }
     }
-}
+
 
 export function buildPanel(signup = false, error_str = ""){
     console.log("Building panel with singup value ", signup)
     // Makes Input UI panel for login or sign up
-    const loginbox = document.getElementById('login-box')
-    loginbox.innerHTML = ''
-    loginbox.classList.add('rect')
+    const loginbox = $('#login-box');
+    loginbox.empty();  // Clear the login box
+    loginbox.addClass('rect');  // Add 'rect' class to the login box
 
-    //Element variables
-    let err_msg = document.createElement('h5');
-    let name_label = document.createElement('label');
-    let name_input = document.createElement('input');
-    let password_label = document.createElement('label');
-    let password_input = document.createElement('input');
-    let confirm_button = document.createElement('button')
-  
-    err_msg.classList.add('error');
-    err_msg.id = 'error-msg'
-    err_msg.textContent = error_str
-    name_label.for = 'username';
-    name_label.textContent = 'Username:'
-    name_input.id = 'username'
-    name_input.classList.add('login-box')
-    name_input.type = 'text'
-    name_input.placeholder = 'Enter Username'
-    password_label.for = 'password'
-    password_label.textContent = "Password:"
-    password_input.id = 'password'
-    password_input.type = 'password'
-    password_input.placeholder = 'Enter Password'
+    // Element variables using jQuery
+    let err_msg = $('<h5></h5>').addClass('error').attr('id', 'error-msg').text(error_str);
+    let name_label = $('<label></label>').attr('for', 'username').text('Username:');
+    let name_input = $('<input>').attr({
+        id: 'username',
+        class: 'login-box',
+        type: 'text',
+        placeholder: 'Enter Username'
+    });
+    let password_label = $('<label></label>').attr('for', 'password').text('Password:');
+    let password_input = $('<input>').attr({
+        id: 'password',
+        type: 'password',
+        placeholder: 'Enter Password'
+    });
+    let confirm_button = $('<button></button>').text('Confirm').addClass('login-button');
 
+    // Add children to login-box
+    loginbox.append(err_msg)
+            .append(name_label)
+            .append(name_input)
+            .append(password_label)
+            .append(password_input);
 
-    //Add children to login-box
-    loginbox.appendChild(err_msg)
-        .appendChild(name_label)
-        .appendChild(name_input)
-        
-    loginbox.appendChild(password_label)
-        .appendChild(password_input)
-    
     // if sign up field
-    if (signup){
-        let confirm_pass_label = document.createElement('label')
-        let confirm_pass_input = document.createElement('input')
-        let not_robot = document.createElement('input')
+    if (signup) {
+        let confirm_pass_label = $('<label>').text('Confirm Password');
+        let confirm_pass_input = $('<input>').attr({
+            id: 'confirm-password',
+            type: 'password',
+            placeholder: 'Confirm Password'
+        });
 
-        confirm_pass_label.textContent = 'Confirm Password'
-        confirm_pass_input.id = 'confirm-password'
-        confirm_pass_input.type = 'password'
-        confirm_pass_input.placeholder = 'Confirm Password'
-        not_robot.type = 'checkbox'
-        not_robot.textContent = 'I am not a Robot.'
-
-        loginbox.appendChild(confirm_pass_label).appendChild(confirm_pass_input).appendChild(not_robot)
-    }
+        loginbox.append(confirm_pass_label)
+                .append(confirm_pass_input)
     
-    confirm_button.textContent = 'Confirm'
-    confirm_button.classList.add('login-button')
-    confirm_button.addEventListener("click", () => validateSignIn(signup));
+    }
+
+    // Event listeners with jQuery
+    confirm_button.on('click', () => validateSignIn(signup));
 
     [name_input, password_input].forEach(input => {
-        input.addEventListener('keypress', (event) => {
+        $(input).on('keypress', (event) => {
             if (event.key === 'Enter') {
                 event.preventDefault();
                 validateSignIn(signup);
@@ -155,8 +139,8 @@ export function buildPanel(signup = false, error_str = ""){
     });
 
     if (signup) {
-        const confirm_pass_input = loginbox.querySelector('#confirm-password');
-        confirm_pass_input.addEventListener('keypress', (event) => {
+        const confirm_pass_input = $('#confirm-password');
+        confirm_pass_input.on('keypress', (event) => {
             if (event.key === 'Enter') {
                 event.preventDefault();
                 validateSignIn(signup);
@@ -164,5 +148,5 @@ export function buildPanel(signup = false, error_str = ""){
         });
     }
 
-    loginbox.appendChild(confirm_button)
+    loginbox.append(confirm_button);
 }
