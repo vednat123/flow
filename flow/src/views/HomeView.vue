@@ -16,6 +16,10 @@
         :key="index" 
         class="poll-card"
       >
+        <div v-if="poll.imagePath" class="poll-image">
+          <img :src="poll.imagePath" alt="Poll Image" />
+        </div>
+
         <h2 class="poll-question">{{ poll.question }}</h2>
 
         <div
@@ -180,6 +184,15 @@ export default {
   font-size: 1.2rem;
   font-weight: bold;
 }
+
+.poll-image img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid crimson;
+}
+
 
 .option-row {
   display: flex;

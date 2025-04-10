@@ -122,7 +122,11 @@ export default {
     handleImageUpload(event) {
       const file = event.target.files[0]
       if (file) {
-        this.previewImage = URL.createObjectURL(file)
+        const reader = new FileReader()
+        reader.onload = () => {
+          this.previewImage = reader.result
+        }
+        reader.readAsDataURL(file)
       }
     },
 
