@@ -1,9 +1,17 @@
+<script setup>
+import {useLoggedIn} from '@/stores/storeAccounts'
+
+const userStore = useLoggedIn();
+console.log(userStore.user)
+</script>
+
 <template>
   <aside class="sidebar-left">
     <div class="logo-container">
       <router-link to="/home">
         <img src="@/assets/Flow-Logo.jpg" class="flow-logo" />
       </router-link>
+      <p>{{ userStore.user }}</p>
     </div>
     <h2>Menu</h2>
     <ul>
@@ -34,7 +42,7 @@ export default {
   name: 'SidebarLeft',
   data() {
     return {
-      showLogoutConfirm: false
+      showLogoutConfirm: false,
     }
   },
   methods: {

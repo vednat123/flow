@@ -23,7 +23,7 @@
       </div>
 
       <div class="login-logo">
-        <img :src="flowLogo" alt="Flow Logo" height="48" width="48" />
+        <img :src="flowLogo" alt="Flow Logo" />
       </div>
     
       <button @click="login" class="login-button">Login</button>

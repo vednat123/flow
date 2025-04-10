@@ -1,5 +1,6 @@
 import router from '@/router'
-import { useAccountStore } from '@/stores/storeAccounts'
+import { useAccountStore, useLoggedIn } from '@/stores/storeAccounts'
+
 
 
 
@@ -43,6 +44,8 @@ export function validateSignIn(signup) {
         for (var account in accounts){      
             if (name.value === accounts[account].name){     // Validate Account name
                 if (password.value === accounts[account].password){     //Validate password match
+                    const userStore = useLoggedIn();
+                    userStore.user = name.value;
                     router.push('/home');   // Navigate to home page
                     return
                 } 
@@ -72,6 +75,8 @@ export function validateSignIn(signup) {
         if (password.value === confirm_password.value){ // Check passwords match
             // Add new account
             addAccount()
+            const userStore = useLoggedIn();
+            userStore.user = name.value;
             router.push('/home');   // Navigate to home page
             return
         } else {

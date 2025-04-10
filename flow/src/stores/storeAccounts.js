@@ -16,4 +16,11 @@ export const useAccountStore = defineStore('accounts', {
       }
     }
   }
-})
+});
+
+
+export const useLoggedIn = defineStore('user', {
+    state: () => ({
+      user: '',
+    }),
+  });
