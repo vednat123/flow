@@ -1,0 +1,4 @@
+AI Prompts Used.
+
+1. How can I configure my vue Vite project to work around CORS error with *example endpoint*
+Response: Showed how to alter vite.config to allow policy
