@@ -1,5 +1,5 @@
 <template>
-  <aside class="right-trending">
+  <aside class="right-sidebar">
     <h2>Trending Polls</h2>
     <div class="trend-item" v-for="(trend, idx) in trending" :key="idx">
       {{ trend }}

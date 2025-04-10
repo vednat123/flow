@@ -31,7 +31,7 @@
     </main>
 
     <!-- Right Sidebar (chat list) -->
-    <aside class="chat-sidebar">
+    <aside class="right-sidebar">
       <h2>Chats</h2>
       <ul>
         <li
@@ -180,22 +180,22 @@ export default {
 }
 
 /* Right Sidebar (chat list) */
-.chat-sidebar {
+.right-sidebar {
   width: 20%;
   background-color: #111;
   padding: 1rem;
   box-sizing: border-box;
   overflow-y: auto;
 }
-.chat-sidebar h2 {
+.right-sidebar h2 {
   color: crimson;
   margin-bottom: 1rem;
 }
-.chat-sidebar ul {
+.right-sidebar ul {
   list-style: none;
   padding: 0;
 }
-.chat-sidebar li {
+.right-sidebar li {
   display: flex;
   align-items: center;
   padding: 0.75rem;
@@ -205,10 +205,10 @@ export default {
   background-color: #222;
   transition: background 0.3s;
 }
-.chat-sidebar li:hover {
+.right-sidebar li:hover {
   background-color: #333;
 }
-.chat-sidebar li.active {
+.right-sidebar li.active {
   background-color: crimson;
 }
 .chat-avatar {

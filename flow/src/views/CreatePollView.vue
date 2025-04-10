@@ -5,7 +5,7 @@
 
     <!-- Main Content -->
     <main class="main-timeline">
-      <h1>Create a New Poll</h1>
+      <h1 class="page-title">Create a New Poll</h1>
       <form @submit.prevent="submitPoll">
         <div class="form-group">
           <label for="question">Poll Question</label>
@@ -45,7 +45,7 @@
     </main>
 
     <!-- Poll Preview -->
-    <aside class="right-trending">
+    <aside class="right-sidebar">
       <h2>Poll Preview</h2>
       <div class="poll-card">
         <div class="poll-image" v-if="previewImage">

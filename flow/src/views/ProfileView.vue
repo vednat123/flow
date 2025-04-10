@@ -41,19 +41,20 @@ console.log(userStore.user)
     </div>
     </main>
 
-    <aside class="right-trending">
-      <!-- Placeholder -->
-    </aside>
+    <TrendingPolls />
+
   </div>
 </template>
 
 <script>
 import SidebarMenu from '@/components/SidebarMenu.vue';
+import TrendingPolls from '@/components/TrendingPolls.vue'
 
 export default {
   name: 'ProfileView',
   components: {
     SidebarMenu,
+    TrendingPolls,
   },
   data(){
     return{
