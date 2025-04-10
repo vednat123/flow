@@ -11,7 +11,7 @@ console.log(userStore.user)
       <router-link to="/home">
         <img src="@/assets/Flow-Logo.jpg" class="flow-logo" />
       </router-link>
-      <p>{{ userStore.user }}</p>
+      <p class="user-name">{{ userStore.user }}</p>
     </div>
     <h2>Menu</h2>
     <ul>
@@ -183,6 +183,25 @@ export default {
   cursor: pointer;
   text-align: left;
   width: 100%;
+}
+
+.user-name {
+  color: crimson;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-left: 0.5rem;
+  margin-top: 0.5rem;
+  display: block;
+  text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.2);
+  letter-spacing: 0.3px;
+}
+
+/*Om - Im adding this as a cool glowing effect as an easter egg cause why not*/
+.user-name:hover {
+  color: #ff4d6d;
+  text-shadow: 0 0 6px rgba(255, 77, 109, 0.5);
+  cursor: default;
 }
 
 </style>
