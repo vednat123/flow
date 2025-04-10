@@ -8,6 +8,57 @@
   background: white;
 }
 
+.home-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #000;
+  color: white;
+}
+
+.main-timeline {
+  width: 60%;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-right: 2px solid crimson;
+}
+
+/* RIGHT SIDEBAR */
+
+.right-trending {
+  width: 20%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.right-trending h2 {
+  color: crimson;
+  margin-bottom: 1rem;
+}
+
+/* POLL */
+.poll-card {
+  background-color: #222;
+  border: 1px solid crimson;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.poll-image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.poll-content {
+  padding: 1rem;
+}
+
+.poll-question {
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
 .darkred{
   font-weight: bold;
   color: rgb(149, 0, 0);

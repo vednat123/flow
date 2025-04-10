@@ -44,7 +44,7 @@
     </main>
 
     <!-- RIGHT SIDEBAR (20%) -->
-    <aside class="sidebar-right">
+    <aside class="right-trending">
       <h2>Trending Polls</h2>
       <div
         class="trend-item"
@@ -153,27 +153,6 @@ export default {
   text-align: center;
 }
 
-/* Each poll is a "card" */
-.poll-card {
-  background-color: #222;
-  border: 1px solid crimson;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-}
-.poll-image img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-}
-.poll-content {
-  padding: 1rem;
-}
-.poll-question {
-  margin-bottom: 1rem;
-  color: #fff;
-}
-
 /* Options + progress bar */
 .option-row {
   margin-bottom: 0.75rem;
@@ -195,15 +174,7 @@ export default {
 }
 
 /* RIGHT SIDEBAR */
-.sidebar-right {
-  width: 20%;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-.sidebar-right h2 {
-  color: crimson;
-  margin-bottom: 1rem;
-}
+
 .trend-item {
   background-color: #222;
   margin-bottom: 1rem;
