@@ -57,7 +57,7 @@ Contributions:
 	Added functionality to log in by pressing the enter key
 	Added a message asking the user to confirm they want to log out
 	Merged common css styles into a main.css file and cleaned up local styles
-    Added basic profile editing functionality
+    	Added basic profile editing functionality
 
 Andrew Clegg - 100745892
 Contributions:
@@ -94,7 +94,7 @@ Contributions:
         • Worked on maiking messgaes postable accsessible
 
     pollStorage
-        • Made the polls locally stroable and accsessible with the use of pinia
+        • Made the polls locally storable and accsessible with the use of pinia
     
     index (routing)
         • Worked on page navigation
