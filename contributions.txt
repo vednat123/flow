@@ -57,3 +57,4 @@ Contributions:
 	Added functionality to log in by pressing the enter key
 	Added a message asking the user to confirm they want to log out
 	Merged common css styles into a main.css file and cleaned up local styles
+    Added basic profile editing functionality
