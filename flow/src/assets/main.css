@@ -213,3 +213,28 @@ h3{
   color: red;
   margin-bottom: 1rem;
 }
+
+/* FOR SCROLLBAR */
+
+.main-timeline{
+  overflow-y: auto;
+  height: 100vh; /* full height */
+}
+
+:deep(.main-timeline::-webkit-scrollbar) {
+  width: 0px;
+}
+
+:deep(.main-timeline:hover::-webkit-scrollbar) {
+  width: 16px;
+}
+
+:deep(.main-timeline::-webkit-scrollbar-track) {
+  background: transparent;
+}
+
+:deep(.main-timeline::-webkit-scrollbar-thumb) {
+  background-color: crimson;
+  border-radius: 10px;
+  border: 4px solid black;
+}

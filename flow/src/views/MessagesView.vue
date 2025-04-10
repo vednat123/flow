@@ -4,7 +4,7 @@
     <SidebarMenu />
 
     <!-- Middle Chat Area -->
-    <main class="chat-main" v-if="activeChat">
+    <main class="main-timeline" v-if="activeChat">
       <header class="chat-header">
         <h2>{{ activeChat.name }}</h2>
       </header>
@@ -141,7 +141,7 @@ export default {
 }
 
 /* Middle Chat Column */
-.chat-main {
+.main-timeline {
   width: 60%;
   display: flex;
   flex-direction: column;

@@ -2,7 +2,7 @@
   <div class="home-layout">
     <SidebarMenu />
 
-    <main class="main-content">
+    <main class="main-timeline">
       <h1 class="page-title">Recent Polls</h1>
       <input
         v-model="searchQuery"
@@ -111,12 +111,13 @@ export default {
 }
 
 /* CENTER (Main content) */
-.main-content {
+.main-timeline {
   width: 60%;
   padding: 1rem;
   box-sizing: border-box;
   border-right: 2px solid crimson; /* separate center from right sidebar */
 }
+
 .page-title {
   margin-bottom: 1rem;
   color: crimson;
