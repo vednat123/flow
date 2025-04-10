@@ -28,18 +28,18 @@
   }
 }
 
-
-.full-body{  
-  height: 100%;
-  width: 100%;
-  margin:0;
-  padding:0;
-  min-height: 100vh;
-  background: black;
-  background-image: url('wallpaper.jpg');
-  background-size: cover; /* Ensures the image covers the entire body */
-  background-position: center; /* Centers the image */
-
+.theme-button {
+  margin-top: 1rem;
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: crimson;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.theme-button:hover {
+  background-color: darkred;
 }
 
 /** Login Stuff **/
@@ -97,7 +97,7 @@ h3{
     color:red;
 }
 
-.custom-button{
+/* .custom-button{
   font-family: Arial, Helvetica, sans-serif;
   background: #f14668;
   padding-top: 11px;
@@ -115,7 +115,7 @@ h3{
 
 .custom-button:hover {
   background: #f03a5f;
-}
+} */
 
 .login-box input {
   width: 100%;

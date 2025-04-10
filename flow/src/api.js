@@ -11,7 +11,7 @@ async function fetchTrends() {
         params: {
           engine: 'google_news',
           q: 'Ontario+Tech',
-          api_key: 'Contact me for key'  // Don't forget your API key
+          api_key: 'bd94f604eb8fe626471a142bbb755de5754f2b53fe888023ace862bd9870a604'  // Don't forget your API key
         }
       });
       return response.data;  // Store the response data

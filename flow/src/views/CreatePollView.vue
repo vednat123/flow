@@ -22,7 +22,7 @@
           />
         </div>
 
-        <button type="button" @click="addOption">Add Option</button>
+        <button type="button" class="theme-button" @click="addOption">Add Option</button>
 
         <div class="form-group checkbox-row">
           <label for="multiple">
@@ -36,7 +36,7 @@
           <input id="imageUpload" type="file" @change="handleImageUpload" accept="image/*" />
         </div>
 
-        <button type="submit">Create Poll</button>
+        <button type="submit" class="theme-button">Create Poll</button>
       </form>
     </main>
 
@@ -72,7 +72,7 @@
     </aside>
 
     <div>
-      <button id="suggestion-panel" @click="showSuggestions">Feeling Stuck? Get Some Ideas!</button>
+      <button id="suggestion-panel" class="theme-button" @click="showSuggestions">Feeling Stuck? Get Some Ideas!</button>
 
       <div class="sliding-panel theme" :class="{ open: showPanel }" >
         <button class="close-btn" @click="togglePanel">×</button>
@@ -85,7 +85,7 @@
             
             <!-- Card content -->
             <h3>{{ card.title }}</h3>
-            <img :src="card.description" alt="Card Icon" />
+            <img :src="card.description" alt="Card Icon" height="100" width="100%" />
 
             <a :href="card.link" target="_blank">Read more</a>
           </div>
@@ -93,8 +93,6 @@
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -166,15 +164,14 @@ export default {
   right: -300px; /* Hide off screen */
   width: 300px;
   height: 60%;
-  
   padding: 20px;
   transition: right 0.3s ease;
   z-index: 1000;
+  overflow-y: auto; /* Enables scrolling if content overflows vertically */
 }
-
-
 .sliding-panel.open {
   right: 0;
+  transform: translateX(0); /* Slide in panel when active */
 }
 
 .home-container {
@@ -253,20 +250,6 @@ input[type="file"] {
   accent-color: crimson;
 }
 
-button {
-  margin-top: 1rem;
-  margin-right: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: crimson;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: darkred;
-}
-
 .right-trending {
   width: 20%;
   padding: 1rem;
@@ -314,20 +297,38 @@ button:hover {
 }
 
 .card {
-  background-color: #f9f9f9;
+  background-color: rgb(248, 66, 66);
   padding: 20px;
   border-radius: 8px;
+  border: 1px solid black;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  color: white;
+}
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  background: none;
+  border: 1px solid white;
+  border-radius:100%;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
 }
 
 .card:hover {
   transform: translateY(-5px);
 }
 
+.card img{
+  border-radius: 8px;
+  border: 1px solid black;
+}
 .card h3 {
   font-size: 1.2em;
   margin-bottom: 10px;
+  color:  rgba(53, 53, 53, 0.95);
 }
 
 .card p {
@@ -339,7 +340,7 @@ button:hover {
   display: inline-block;
   margin-top: 10px;
   text-decoration: none;
-  color: #007BFF;
+  color: #031d38;
 }
 
 .card a:hover {
