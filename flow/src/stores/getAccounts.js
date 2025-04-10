@@ -17,10 +17,4 @@ const apiClient = axios.create({
       // Added onto baseURL
       return apiClient.get('/accounts')
     },
-    updateAccount(id, data) {
-      return apiClient.put(`/accounts/${id}`, data)
-    },
-    getAccount(id) {
-      return apiClient.get(`/accounts/${id}`)
-    }
   }
