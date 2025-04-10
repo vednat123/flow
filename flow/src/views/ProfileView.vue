@@ -1,3 +1,10 @@
+<script setup>
+import {useLoggedIn} from '@/stores/storeAccounts'
+
+const userStore = useLoggedIn();
+console.log(userStore.user)
+</script>
+
 <template>
   <div class="home-container">
     <SidebarMenu />
@@ -7,8 +14,8 @@
       <div class="profile-header">
         <img :src="profile.photo" width="250" height="250">
         <div class="user-info">
-          <h1> {{ profile.name }} </h1>
-          <span class="username">@{{profile.username}}</span>
+          <h1> {{ userStore.user }} </h1>
+          <span class="username">@{{userStore.user}}</span>
         </div>
       </div>
       <div class="profile-bio">
@@ -27,7 +34,7 @@
           <span class="number">{{profile.following}}</span>
           <span class="label"> Following</span>
         </div>
-        <button class="edit-profile-btn" @click="editProfile">
+        <button class="theme-button" @click="editProfile">
           Edit Profile
         </button>
       </div>
@@ -52,9 +59,9 @@ export default {
     return{
       profile:{
         photo: "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg",
-        name: "placeholder name",
-        username: "username",
-        bio: "bio",
+        name: "",
+        username: "",
+        bio: "No Bio Yet.",
         posts: 0,
         followers: 0,
         following: 0

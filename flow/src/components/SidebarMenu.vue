@@ -1,11 +1,8 @@
 <script setup>
 import {useLoggedIn} from '@/stores/storeAccounts'
-import { onMounted } from 'vue'
 
 const userStore = useLoggedIn();
 console.log(userStore.user)
-
-    
 </script>
 
 <template>
@@ -46,7 +43,6 @@ export default {
   data() {
     return {
       showLogoutConfirm: false,
-      user: 'name'
     }
   },
   methods: {
