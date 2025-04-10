@@ -58,29 +58,3 @@ Contributions:
 	Added a message asking the user to confirm they want to log out
 	Merged common css styles into a main.css file and cleaned up local styles
     Added basic profile editing functionality
-
-Vedant Trivedi - 100823667
-Contributions:
-    HomeView
-        • Worked on the general UI of the app and design with the three column layout and design
-        • Worked on making the general look of the polls 
-        • Worked on the profile picture clickable
-        • Worked on making posted polls visible on the front page
-        • Worked on navigating to home after posting a poll
-        • Worked on page navigation for the left sidebar
-        • Worked on making picture avalible above the polls as a post
-
-    CreatePollView
-        • Worked on making the local storage for polls 
-        • Worked on retreving posted polls from local storage and putting them on the front page
-        • Worked on navigating to the main page after the polls have been posted
-
-    MessagesView.vue
-        • worked the initial and general design of the MessagesView page
-        • Worked on maiking messgaes postable accsessible
-
-    pollStorage
-        • Made the polls locally stroable and accsessible with the use of pinia
-    
-    index (routing)
-        • Worked on page navigation
