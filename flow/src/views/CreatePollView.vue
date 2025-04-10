@@ -26,7 +26,8 @@
         </div>
         <small class="char-limit-text">(Each option can have up to 16 characters maximum)</small>
 
-        <button type="button" class="theme-button" @click="addOption">Add Option</button>
+        <button type="button" class="theme-button" @click="addOption" :disabled="options.length >= 8">Add Option</button>
+        <small class="char-limit-text">(Up to 8 options maximum)</small>
 
         <div class="form-group checkbox-row">
           <label for="multiple">
@@ -195,11 +196,6 @@ export default {
   transform: translateX(0); /* Slide in panel when active */
 }
 
-.main-timeline h1 {
-  color: crimson;
-  margin-bottom: 1.5rem;
-}
-
 .form-group {
   margin-bottom: 1rem;
 }
@@ -227,15 +223,12 @@ input[type="file"] {
   color: white;
   font-weight: bold;
 }
+
 .checkbox-row input[type="checkbox"] {
   transform: scale(1.2);
   accent-color: crimson;
 }
 
-.poll-image img {
-  max-height: 200px;
-  border-bottom: 1px solid crimson;
-}
 
 #suggestion-panel{
   position: fixed;
@@ -260,6 +253,7 @@ input[type="file"] {
   transition: transform 0.3s;
   color: white;
 }
+
 .close-btn {
   position: absolute;
   top: 8px;
@@ -280,6 +274,7 @@ input[type="file"] {
   border-radius: 8px;
   border: 1px solid black;
 }
+
 .card h3 {
   font-size: 1.2em;
   margin-bottom: 10px;
@@ -290,7 +285,6 @@ input[type="file"] {
     -0.75px  0.75px 0 black,
     0.75px  0.75px 0 black;
     font-weight: bold;
-
 }
 
 .card p {
@@ -316,10 +310,6 @@ input[type="file"] {
   gap: 1rem;
   margin-bottom: 1rem;
 }
-.progress-bar {
-  flex-grow: 1;
-  max-width: 75%;
-}
 
 .vote-choice {
   display: flex;
@@ -328,7 +318,6 @@ input[type="file"] {
   color: white;
   font-size: 0.9rem;
   white-space: nowrap;
-
 }
 
 .char-limit-text {
@@ -336,6 +325,7 @@ input[type="file"] {
   color: #aaa;
   margin-left: 0.25rem;
   padding-bottom: 10px;
+  padding-top: 6px;
   display: block;
 }
 </style>
